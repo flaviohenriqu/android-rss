@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <EditTextPreference
+        android:key="feedlink"
+        android:defaultValue="@string/feedlink"
+        android:dialogMessage="Digite o link do feed"
+        android:dialogTitle="Mudar Link do Feed"
+        android:title="Link do feed"
+        android:negativeButtonText="Cancelar"
+        android:positiveButtonText="Mudar"
+        >
+        
+        </EditTextPreference>
+
+</PreferenceScreen>
