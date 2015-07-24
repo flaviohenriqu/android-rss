@@ -137,10 +137,6 @@ public class MainActivity extends Activity {
 
 			private List<ItemRSS> parse(String result) throws XmlPullParserException, IOException{
 				List<ItemRSS> ListResult = new ArrayList<ItemRSS>();
-//				String title = "";
-//				String link = "";
-//				String description = "";
-//				String pubDate = "";
 				
 				XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 				
@@ -182,55 +178,13 @@ public class MainActivity extends Activity {
 					eventType = parser.next();
 				}
 				
-				/*while(parser.next() != XmlPullParser.END_DOCUMENT){
-					if(parser.getEventType() == XmlPullParser.START_TAG){
-						String tag = parser.getName();
-						if(tag.equals("item")){
-							while(parser.next()!=XmlPullParser.END_TAG){
-								//Log.i("XMLparsing", parser.getName());
-								if(parser.getEventType() == XmlPullParser.START_TAG){
-									String tagItemAberta = parser.getName();
-									Log.i("XML ",tagItemAberta.toString());
-									
-									switch (tagItemAberta.toString()) {
-										case "link":
-											link = parser.nextText();
-											break;
-										case "title":
-											title = parser.nextText();
-											break;
-										case "description":
-											description = parser.nextText();
-											break;
-										case "pubDate":
-											pubDate = parser.nextText();
-											break;
-										default:
-											parser.next();
-											break;
-									}									
-									parser.nextTag();
-								}
-							}
-							ListResult.add(new ItemRSS(title, link, description, pubDate));
-						}
-					}
-				}*/
 				return ListResult;
 				
 			}
 			
-			//private ProgressDialog dialog;
-			@Override
-			protected void onPreExecute() {
-				//dialog = ProgressDialog.show(getActivity(), "", "Carregando. Por favor aguarde...", true);
-				//mRssFeed.getAdapter().
-			}
-
 			@Override
 			protected void onPostExecute(List<ItemRSS> result) {
-				//dialog.dismiss();
-				
+
 				ArrayAdapter<ItemRSS> adapter = new ArrayAdapter<ItemRSS>(getActivity(),
 				        android.R.layout.simple_list_item_1, result);
 				
@@ -242,16 +196,8 @@ public class MainActivity extends Activity {
 							int position, long id) {
 						// TODO Auto-generated method stub
 						Object item = parent.getAdapter().getItem(position);
-						//ArrayAdapter<ItemRSS> adapter = (ArrayAdapter<ItemRSS>) parent.getAdapter();
-						//ItemRSS item = adapter.getItem(position);
 						if(item instanceof ItemRSS)
 						{
-//							Log.i("RSS title",((ItemRSS) item).getTitle());
-//							Log.i("RSS link",((ItemRSS) item).getLink());
-//							Log.i("RSS desc",((ItemRSS) item).getDescription());
-//							Log.i("RSS date",((ItemRSS) item).getPubDate());
-//							Toast.makeText(getActivity(), ((ItemRSS) item).getLink(), Toast.LENGTH_SHORT).show();
-							
 							startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(((ItemRSS) item).getLink())));
 						}
 						
@@ -261,7 +207,6 @@ public class MainActivity extends Activity {
 
 		}
 	
-		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
